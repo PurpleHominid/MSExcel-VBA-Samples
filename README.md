@@ -184,4 +184,42 @@ Sub ImproveJSValidation_Click()
 End Sub
 ```
 
+## split the cell value using a delimiter
+```
+Sub CalculateTotal_Click()
 
+    'This function gets the row and column number related to the position of the button
+    'then uses a find to split and return the prefix value
+
+    Dim b As Object, vName As Variant, RowNo As Integer, ColNo As Integer
+    Dim sString As String 'Create a variable for our default string
+    Dim sPrefix As String 'Create a variable for our default string prefix
+
+    Set b = ActiveSheet.Buttons(Application.Caller) 'locate the row and column of the button
+    With b
+        vName = .Name 'Get the name of the object
+        With b.TopLeftCell
+            ColNo = .Column
+            RowNo = .Row
+        End With
+    End With
+
+    Set b = Nothing
+
+    With ActiveSheet.Shapes(vName).ControlFormat
+        MsgBox "Index = " & .Value
+        MsgBox "Value = " & .List(.Value)
+    End With
+
+
+   ' sString = ActiveSheet.Cells(RowNo, ColNo - 2).Value
+   ' MsgBox (sString)
+   ' sPrefix = Mid(sString, 1, Find(":", sString) - 1)
+
+   ' MsgBox "Column Number " & ColNo
+   ' MsgBox "Row Number " & RowNo
+   ' MsgBox "Prefix " & sPrefix
+
+
+End Sub
+```
