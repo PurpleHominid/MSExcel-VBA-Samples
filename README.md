@@ -131,7 +131,8 @@ Sub RepoCommits_Change()
     End With
     Set b = Nothing
 
-    MsgBox ("Check box Row: " & RowNo)
+    MsgBox ("Combobox Row: " & RowNo)
+    MsgBox ("Combobox Col: " & ColNo)
 
     'Use the name of the object to get the details
     With ActiveSheet.Shapes(vName).ControlFormat
@@ -163,7 +164,9 @@ Sub ImproveJSValidation_Click()
 
     'Use the name of the object to get the details
     With ActiveSheet.Shapes(vName).ControlFormat
-        lValue = CLng(.Value)
+        'Abs(Worksheets(1).Shapes("Check Box 1").OLEFormat.Object.Value > 0) 'other methods, for reference here only
+        'Controls("Check Box 1") = True 'other methods, for reference here only
+        lValue = CLng(.Value) '1 is checked, -4146 is unchecked, 2 is mixed (grey box)
         If (lValue > 0) Then
             bState = True
         End If
