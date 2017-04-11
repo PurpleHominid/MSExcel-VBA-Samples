@@ -143,7 +143,7 @@ Sub RepoCommits_Change()
 End Sub
 ```
 
-## Determin the value of a CheckBox using the control name and identifies the ROW/COL
+## Determine the value of a CheckBox using the control name and identifies the ROW/COL
 ```
 Sub ImproveJSValidation_Click()
     Dim b As Object, vName As Variant, RowNo As Integer, ColNo As Integer, lValue As Long, bState As Boolean
@@ -187,7 +187,7 @@ Sub ImproveJSValidation_Click()
 End Sub
 ```
 
-## split the cell value using a delimiter
+## Split the cell value using a delimiter with MID and FIND
 ```
 Sub CalculateTotal_Click()
 
