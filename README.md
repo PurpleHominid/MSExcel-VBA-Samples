@@ -136,8 +136,8 @@ Sub RepoCommits_Change()
 
     'Use the name of the object to get the details
     With ActiveSheet.Shapes(vName).ControlFormat
-        MsgBox "Index = " & .Value
-        MsgBox "Value = " & .List(.Value)
+        MsgBox "Index = " & .Value 'index value of select option (base 0 int)
+        MsgBox "Value = " & .List(.Value) 'text string value of selected element
     End With
     
 End Sub
@@ -187,7 +187,7 @@ Sub ImproveJSValidation_Click()
 End Sub
 ```
 
-## Split the cell value using a delimiter with MID and FIND
+## Split the cell value using a delimiter and return the left prefix
 ```
 Sub CalculateTotal_Click()
 
@@ -217,8 +217,9 @@ Sub CalculateTotal_Click()
 
    ' sString = ActiveSheet.Cells(RowNo, ColNo - 2).Value
    ' MsgBox (sString)
-   ' sPrefix = Mid(sString, 1, Find(":", sString) - 1)
-
+    'sPrefix = Mid(sPrefix, 1, Find(":", sPrefix) - 1) 'for use IN and EXCEL cell
+    'sPrefix = Left(sPrefix, InStr(sPrefix, ":") - 1) 'for use in a VBA script
+   
    ' MsgBox "Column Number " & ColNo
    ' MsgBox "Row Number " & RowNo
    ' MsgBox "Prefix " & sPrefix
