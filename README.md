@@ -227,3 +227,47 @@ Sub CalculateTotal_Click()
 
 End Sub
 ```
+
+## Get the value of a combobox, identify then split the select text value and update another cell related to the origin combobox location
+```
+Sub DropDownStructure_Change()
+
+    'get the value of a combobox and identify the objects location as row, column
+    'then split the select text value and update another cell related to the origin combobox
+    Dim b As Object, vName As Variant, RowNo As Integer, ColNo As Integer
+    Dim lSelectedIndex As Long, sSelectedValue As String
+    Dim iPrefixValue As Integer
+
+    Set b = ActiveSheet.Shapes(Application.Caller)
+    With b
+        vName = .Name 'Get the name of the object
+        With b.TopLeftCell
+            ColNo = .Column
+            RowNo = .Row
+        End With
+
+    End With
+    Set b = Nothing
+
+    'MsgBox ("ComboBox Row: " & RowNo)
+    'MsgBox ("ComboBox Col: " & ColNo)
+
+    'Use the name of the object to get the details
+    With ActiveSheet.Shapes(vName).ControlFormat
+
+        lSelectedIndex = .Value 'index value of select option (base 0 int)
+        sSelectedValue = .List(.Value) 'text string value of selected element
+
+    End With
+
+    'iPrefixValue = Mid(sSelectedValue, 1, Find(":", sSelectedValue) - 1) 'for use IN and EXCEL cell
+    iPrefixValue = Left(sSelectedValue, InStr(sSelectedValue, ":") - 1) 'for use in a VBA script
+
+     'MsgBox "Selected Index = " & lSelectedIndex
+     'MsgBox "Selected Value = " & sSelectedValue
+     'MsgBox "Prefix Value = " & iPrefixValue
+
+    ActiveSheet.Cells(RowNo, ColNo + 5).Value = iPrefixValue
+
+End Sub
+```
