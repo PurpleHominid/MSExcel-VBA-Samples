@@ -249,6 +249,7 @@ Sub DropDownStructure_Change()
     End With
     Set b = Nothing
 
+    'MsgBox ("Element Name: " & vName)
     'MsgBox ("ComboBox Row: " & RowNo)
     'MsgBox ("ComboBox Col: " & ColNo)
 
