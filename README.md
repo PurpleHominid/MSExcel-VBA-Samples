@@ -41,7 +41,7 @@ Sub ButtonURLOpen_Click()
 End Sub
 ```
 
-## Return TRUE/FALSE is the URL provide exists (needs a little work, WinHttp.WinHttpRequest is not available on Mac MSExcel, plus the editor is junk!)
+## Return TRUE/FALSE if the URL provide exists (needs a little work, WinHttp.WinHttpRequest is not available on Mac MSExcel, plus the editor is junk!)
 ```
 Function URLExists(sURL As String) As Boolean
     Dim Request As Object
